@@ -8,6 +8,20 @@
 {% block body %}
 
     <h1> Hello Shop Index! </h1>
+    
+    <div>
+        <ul>
+            {% for name, price in products %}
+            	<li>{{ name }} ({{ name|length }}) for ${{ price }}</li>
+                {% if name|length == 7 %}
+                	<span>Lucky product!</span>
+                {% endif %} 
+            {% empty %}
+                No products here
+            {% endfor %}
+            
+        </ul>
+    </div>
 
     <div>
         Time running: {{ time_running }}
