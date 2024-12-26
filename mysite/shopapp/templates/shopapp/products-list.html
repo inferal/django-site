@@ -1,7 +1,7 @@
 {% extends 'shopapp/base.html' %}
 
 {% block title %}
-	
+	Product list
 {% endblock %}
 
 {% block body %}
@@ -11,7 +11,7 @@
         {% for product in products %}
             <div>
                 <p>Name: {{ product.name }}</p>
-                <p>Price: {% firstof product.price 'No price' %}}</p>
+                <p>Price: {% firstof product.price 'No price' %}</p>
                 <p>Discount: {% firstof product.discount 'No discount' %}</p>
             </div>
         {% endfor %}
