@@ -14,13 +14,25 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = "pk", "name"
     ordering = "pk",
     search_fields = "name", "description"
+    fieldsets = [
+        (None, {
+            "fields": ("name", "description"),
+        }),
+        ("Price options", {
+            "fields": ("price", "discount"),
+            "classes": ("wide", "collapse",) #скрывать не нужную дерикторию
+        }),
+        ("Extra options", {
+            "fields": ("archived",),
+            "classes": ("collapse",),
+            "description": "Extra options. Field 'archived' is for soft delete",
+        })
+    ]
 
     def description_short(self, obj: Product) -> str:
         if len(obj.description) < 100:
             return obj.description
         return obj.description[:100] + "..."
-
-# admin.site.register(Product, ProductAdmin)
 
 class ProductInline(admin.TabularInline):
     model = Order.products.through
