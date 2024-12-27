@@ -31,3 +31,7 @@ class Order(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     products = models.ManyToManyField(Product, related_name="orders")
+
+    # def __str__(self) -> str:
+    #     # return f"Product(pk={self.pk}, name={self.name!r})"
+    #     return self.delivery_address
